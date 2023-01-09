@@ -1,22 +1,14 @@
-//const express = require('express')
-import app from 'express';
-const app = express()
+import express from "express";
+import * as controller from "./controller.js";
 
-const contacts = [{
-    nom: "Xavier",
-    telephone: "0434343434"
-},
-{
-    nom: "Robert",
-    telephone: "0534343434"
-}]
+const app = express();
 
-app.get('/', function (req, res) {
-    res.send('Hello World')
-})
+app.get("/", function (req, res) {
+    res.send("Hello EPSI");
+});
 
-app.get('/api/contacts', function (req, res) {
-    res.status(200).json(contacts)
-})
+app.get("/api/contacts", controller.getContacts);
 
-module.exports = app
+app.get("/api/contacts/:id", controller.getContact);
+
+export default app;

@@ -1,48 +1,38 @@
-//const request = require("supertest")
-//const app = require("./app.js")
-import { Request } from "supertest";
-import app from "./app.js";
+import request from "supertest";
+import app from "../app.js";
 
 describe("Test the root path", () => {
-    test("It should respond to the GET method", done => {
+    test("should respond to the GET method", () => {
         request(app)
             .get("/")
-            .then(response => {
+            .then((response) => {
                 expect(response.statusCode).toBe(200);
-                done();
             });
     });
-});
-
-describe("Second test", () => {
-    test("It should respond to the GET method", done => {
+    test(" should respond with 404 to GET /coucou", () => {
         request(app)
-            .get("/")
-            .then(response => {
+            .get("/coucou")
+            .then((response) => {
                 expect(response.statusCode).toBe(404);
-                done();
             });
     });
 });
-
 describe("Test the /api/contacts path", () => {
-    test("It should return code status 200", done => {
+    test("should return code status 200", () => {
         request(app)
             .get("/api/contacts")
-            .then(response => {
+            .then((response) => {
+                // console.log(response)
                 expect(response.statusCode).toBe(200);
-                done();
+                // expect(response.body[0].nom).toBe("Xavier");
             });
     });
-});
-
-describe("Should return nom key in response", () => {
-    test("It should return code status 200", done => {
+    test("should return nom key in response", () => {
         request(app)
             .get("/api/contacts")
-            .then(response => {
+            .then((response) => {
+                // console.log(response)
                 expect(response.body[0].nom).toBe("Xavier");
-                done();
             });
     });
 });
