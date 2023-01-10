@@ -36,3 +36,16 @@ describe("Test the /api/contacts path", () => {
             });
     });
 });
+
+test("should return status 200 ", () => {
+    request(app)
+        .post("/new/contact")
+        .set('Accept', 'application/json')
+        .send("nom=Dounia&telephone=074444377")
+        .then((response) => {
+            console.log(response)
+            expect(response.statusCode).toBe(200);
+            // expect(response.body[0].nom).toBe("Xavier");
+        });
+});
+
