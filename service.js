@@ -1,12 +1,20 @@
 import { contacts } from "./data.js";
+import { nanoid } from "nanoid";
 
-function getContacts(req, res) {
-    res.status(200).json(contacts);
+function getContacts() {
+    return contacts;
 }
 
-function getContact(req, res) {
-    const id = req.params.id;
-    res.status(200).json({ id });
+function getContact(id) {
+    return contacts.find((contact) => contact.id === id);
 }
 
-export { getContacts, getContact };
+function postContact(nom, telephone) {
+    const id = nanoid();
+    const contact = { id, nom, telephone };
+    contacts.push(contact);
+    console.log(contacts);
+    return contact;
+}
+
+export { getContacts, getContact, postContact };
