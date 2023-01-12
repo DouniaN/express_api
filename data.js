@@ -1,10 +1,10 @@
 export const contacts = [
     {
-        nom: "Xavier",
-        telephone: "0434343434",
+        nom: "Dounia",
+        telephone: "0434347774",
     },
     {
-        nom: "Robert",
-        telephone: "0534343434",
+        nom: "Nougaoui",
+        telephone: "0533333434",
     },
 ];
